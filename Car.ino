@@ -5,6 +5,22 @@
 IPAddress apIP(192, 168, 1, 1);
 ESP8266WebServer server (80);
 
+void setup() {
+pinMode(D5, OUTPUT);
+pinMode(D6, OUTPUT);
+pinMode(D7, OUTPUT);
+pinMode(D8, OUTPUT);
+  WiFi.softAP("Paco's_Car");
+  Serial.begin (115200);
+  Serial.println("Loading...");  
+  WiFi.mode(WIFI_AP);
+  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
+  Serial.println(WiFi.localIP());
+  server.begin();
+  server.on("/",file);
+  server.on("/opera", opera);
+}
+
 void file(){
   File file = SPIFFS.open("/index.html", "r");
 server.streamFile(file, "text/html");
@@ -50,21 +66,6 @@ void opera() {
 server.send(200, "text/plain", "ok");
 }
 
-void setup() {
-pinMode(D5, OUTPUT);
-pinMode(D6, OUTPUT);
-pinMode(D7, OUTPUT);
-pinMode(D8, OUTPUT);
-  WiFi.softAP("Paco's_Car");
-  Serial.begin (115200);
-  Serial.println("Loading...");  
-  WiFi.mode(WIFI_AP);
-  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
-  Serial.println(WiFi.localIP());
-  server.begin();
-  server.on("/",file);
-  server.on("/opera", opera);
-}
 
 void loop() {
   server.handleClient();
