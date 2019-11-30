@@ -30,7 +30,6 @@ Serial.println(WiFi.localIP());
 
 void loop(){
 while(!Serial.available() > 0);
-if (Serial.available() > 0) {
 if(Serial.readString() == "forward"){
 test=1;
 Serial.println("Forward");
@@ -46,7 +45,6 @@ Serial.println("Right");
 }else{
 test=5;
 Serial.println("Stop"); 
-}
 }
 light_get = "/opera?opera="+String(test);
 WiFiClient client;
