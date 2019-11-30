@@ -33,18 +33,18 @@ void eepromWriteLong(int address, unsigned long value) {
 
 int set(int Pin) {
   int x;
-  tone(12,131);
+  tone(12,500);
   delay(1000);
   noTone(12);
   for (int i = 1; i <= 20; i = i + (1)) {
-    x = x + analogRead(A0);
+    x = x + analogRead(Pin);
   }
   x = x / 20;
-  tone(12,131);
+  tone(12,500);
   delay(300);
   noTone(12);
   delay(300);
-  tone(12,131);
+  tone(12,500);
   delay(300);
   noTone(12);
   return x;
