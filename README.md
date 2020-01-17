@@ -8,8 +8,6 @@ Motor drive board * 1
 
 Arduino * 1
 
-Remote potentiometer * 1
-
 Some connection cables...
 
 You have to use your mobile phone to send message to the ESP8266.
