@@ -6,8 +6,6 @@ ESP8266 * 2
 
 Motor drive board * 1
 
-Arduino * 1
-
 Some connection cables...
 
 You have to use your mobile phone to send message to the ESP8266.
