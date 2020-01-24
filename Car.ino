@@ -10,7 +10,7 @@ pinMode(D5, OUTPUT);
 pinMode(D6, OUTPUT);
 pinMode(D7, OUTPUT);
 pinMode(D8, OUTPUT);
-  WiFi.softAP("Paco's_Car");
+  WiFi.softAP("My_Car");
   Serial.begin (115200);
   Serial.println("Loading...");  
   WiFi.mode(WIFI_AP);
@@ -18,7 +18,7 @@ pinMode(D8, OUTPUT);
   Serial.println(WiFi.localIP());
   server.begin();
   server.on("/",file);
-  server.on("/opera", opera);
+  server.on("/Service", Service);
 }
 
 void file(){
@@ -27,8 +27,8 @@ server.streamFile(file, "text/html");
   file.close();
 }
 
-void opera() {
-  String word = server.arg("opera");
+void Service() {
+  String word = server.arg("Service");
  
   Serial.println(word);
   if(word=="1"){
